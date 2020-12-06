@@ -1,0 +1,109 @@
+--既存スコア
+GotExpFlag	: : ネザースターの数を保存する
+ExpMessageFlag	: : ここではアマスタとプレイヤーを同期するためのスコア置き場にする。
+
+--追加スコア
+ExpID 		: 経験値保持同期用ID 		: プレイヤーとアマスタを同期させるためのID
+ #NextExpID 	: 次に取得させるID 		: 同意
+GotExp 		: 保存経験値量 			: オフラインプレイヤーの取得経験値
+ArmorExpToLevel : レベルアップまでの経験値量 	: アマスタの必要経験値量を保存
+ArmorLevel 	: アマスタのLevel 		: アマスタのレベルを保存
+ArmorNextExp 	: 次レベルの経験値量 		: 次のレベルの必要経験値量を保存。7ずつプラスする
+ExpSystemFlag 	: 経験値システム処理フラグ 	:1=経験値未取得フラグ(プレイヤー・アマスタ問わず)
+						 2=プレイヤー転職時アマスタにコピペするフラグ
+						 3=アマスタのレベルが上がった時の処理フラグ
+						 4=ログインフラグ
+						 5=登録フラグ
+--必要タグ
+ExpEntity	: ID取得済みのプレイヤーと保存用アマスタに付与
+WillGetID	: ID未取得のアマスタに付与。取得後削除
+WillGetExp	: 経験値取得者に付与
+nothaveJob	: プレイヤーが職に就いたら削除
+haveJob 	: プレイヤーが職に就いたら付与
+===
+追加コマブロの配置とそれぞれの役割
+
+-1920 12 -128	ログイン時取得処理
+-1920 11 -128	プレイヤーに経験値を付与する処理
+-1920 10 -128	アマスタのLvUP処理
+-1920  9 -128 	転職時アマスタに色々コピーする処理
+-1920  8 -128	登録処理
+
+===
+--登録処理
+ログイン時or初期ログイン時[tag=!Player]のプレイヤーのフラグ5にする
+ExpEntityが付いてないFlag=5のプレイヤーに#NextExpIDをExpIDに付与
+WillGetIDが付いているアマスタを召喚
+WillGetIDが付いているアマスタに#NextExpIDをExpIDに付与
+WillGetIDを削除
+#NextExpIDを+１する
+登録通知を送信
+プレイヤーにExpEntityを付与
+フラグを2にセットする
+転職時処理を実行
+
+--ログイン時取得処理
+-ログイン処理
+フラグを4にセット
+ログイン時未取得経験値があるかどうかチェックする処理を実行
+
+-ログイン時未取得経験値があるかどうかチェックする処理
+#同期処理
+GotExpがあれば経験値取得処理を起動
+
+--経験値取得時の処理
+clearで経験値を取得
+GotExpFlag_min=1のプレイヤーの経験値量を全てのアマスタのGotExpに加算
+(ExpEntity:Player,score_Job_min=1)にフラグ１を付与
+プレイヤーに経験値付与のコマブロ起動
+(ExpEntity:ArmorStand,tag=haveJob)のArmorExpToLevelをGotExpFlagスコアから引く
+(ExpEntity:ArmorStand,tag=nothaveJob)のArmorExpToLevelをGotExpスコアから引く
+ArmorExpToLevelがマイナスになったらアマスタのExpSystemFlagを3にする
+フラグが3ならレベルアップを起動
+プレイヤーに経験値を与える処理をスタートさせる
+
+---プレイヤーに経験値を付与する処理
+フラグが立っているプレイヤーをランダムに選びタグ(WillGetExp)を付与する
+#同期処理
+0のアマスタのGotExpで(WillGetExp)ExpToLevelを減算する
+GotExpの値でtellrawを出す
+0のアマスタのGotExpをリセットする
+haveJobを持っていないアマスタにhaveJobを付与
+haveJobを持っているアマスタからnothaveJobを削除
+WillGetExpのExpSystemFlagをリセット
+WillGetExpを削除
+ExpSystemFlagが1のプレイヤーがいたら
+リピート
+
+---アマスタのLvUP処理 (アマスタが50Lv以上になったら除外する)
+フラグ付きのアマスタのレベルを1上げる
+ArmorExpToLevelにArmorNextExpを加算する
+ArmorNextExpを7上げる
+ArmorExpToLevel_min=1ならフラグ削除
+ArmorLevelが50になったらメッセージを出す
+フラグありなら、クロックする。
+
+--転職時アマスタに色々コピーする処理
+-転職処理
+転職者にフラグを立てる
+スコアコピー処理をスタートさせる
+
+-スコアコピー処理
+#ID同期システム
+フラグ立ってる人のレベルをコピー:ArmorLevel
+〃残り経験値:ArmorExpToLevel
+ArmorNextExpにArmorLevelをコピー
+ArmorNextExp×７をする
+ArmorExpToLovelが0以下ならフラグを3にする (各職初就職時のみ)
+アマスタのLvUP処理を起動する
+haveJob付与
+(初回のみになる)該当ストレージのArmorExpToLevelをGotExpから引く
+nothaveJob削除
+いろいろリセットする
+
+===
+-#ID同期システム
+アマスタそれぞれのExpIDをそれぞれのExpMessageFlagにコピー
+何かしらフラグが立ってる人のIDで引く
+0になったアマスタを対象にする
+(適応場所によって微々の調整あり)
