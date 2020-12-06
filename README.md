@@ -4,11 +4,13 @@ PonponのThe Unusual SkyBlock 二次創作物置き場です！
 主に1コマンドパッチを配布します。  
 また、ISF_TUSBで使用するコマンドを置く予定です。  
 コマンドパッチの配布はTwitterの[モーメント](https://twitter.com/i/events/1205486939643580416)にて行っています。
+
 ---
 ## これだけは知っておいてほしいこと
 ここにあるコマンドパッチはPonponが作成している非公式のものだということを知っておいてください。   
 非公式なのでここのパッチを導入して起きた可能性のあるバグは**公式TUSBに報告せず**、Ponponに連絡をください。  
 連絡先は下のほうに掲載しておきます。
+
 ---
 ## コマンドパッチについて
 私が製作する1コマンドパッチは、The Unusual SkyBlock v12.0.9 にて製作・動作確認を行っています。  
@@ -50,12 +52,14 @@ LANワールドを公開するとOP権限を取得できます。
 ## コマンドパッチ製作ツールについて
 mkm75氏作成の **ezpatch.jar** というコマンド圧縮ツールを使用しています。  
 ツールは[こちら](https://github.com/crafter1415/ezpatch/blob/main/README.md)からダウンロードができます。細かい説明も書かれています。
+
 ---
 ## パッチを作るためにお世話になっているところとお礼
 mkm75氏 [ezpath.jar](https://github.com/crafter1415/ezpatch/blob/main/README.md)  
 [Pastebin.com](https://pastebin.com/)  
 [Dropbox](https://www.dropbox.com/)  
 **いつもありがとうございます!**
+
 ---
 ## バグ報告の際の連絡先
 Twitter : [nepon13](https://twitter.com/nepon13)  
