@@ -1,0 +1,34 @@
+アーブル　USB_Aburu
+
+アオベエ　USB_Aobe
+
+アカネ　USB_Akane
+
+キスケ　USB_Kisuke
+
+クリーン・オフィサー　USB_CleanOfficer
+
+幸福村人A　USB_Happiness_A
+
+幸福村人B　USB_Happiness_B
+
+幸福村人C　USB_Happiness_C
+
+幸福村人D　USB_Happiness_D
+
+水路の管理人　USB_Suironokanrinin
+
+ソロニール　USB_Soroniru
+
+東京商業流通協同組合　USB_Tokyosyougyou
+
+ハピネス・オフィサー　USB_HappinessOfficer
+
+番台　USB_Bandai
+
+フリーマーケット　USB_FreeMarket
+
+リンディル　USB_Rindyiru
+
+れんと　USB_Rento
+

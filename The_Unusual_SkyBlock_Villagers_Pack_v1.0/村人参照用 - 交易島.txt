@@ -1,0 +1,25 @@
+アルバイト(白いやつ)　USB_PartTimeJob_1
+
+アルバイト(金のやつ)　USB_PartTimeJob_2
+
+印板屋　USB_Inbanya
+
+占い師　USB_FortuneTeller
+
+エージェント　USB_Agent
+
+ガイド　USB_Guide
+
+交易島の霊　USB_Ghost
+
+神官　USB_Pastor
+
+ドラッグパパス　USB_DragguPapasu
+
+農業家　USB_Farmer
+
+ブロント 　USB_Buronto
+
+牧師　USB_Priest
+
+マツキヨ　USB_Matsukiyo

@@ -1,0 +1,20 @@
+隠居人　ダスファー　USB_Dasufar
+
+篝火　USB_Kagaribi
+
+黒の商人　USB_BrackShop
+
+探検家　ポトパト　USB_Potopato
+
+トカルトの商人　USB_TokarutoShop
+
+酒好きの商人　USB_Sakezuki
+
+スムフルの漁業商人　USB_FishShop
+
+スムフルの商人　USB_SumufuruShop
+
+迷い人　ルニアス　USB_Runiasu
+
+村の長　ジェム　USB_Jemu
+
