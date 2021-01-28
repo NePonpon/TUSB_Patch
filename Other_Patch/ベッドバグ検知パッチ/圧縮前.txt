@@ -1,0 +1,39 @@
+# ベッドバグ検知パッチv2.0
+# By Ponpon
+# v2.0 : ベッドバグが実際に発生した場合にバグ状態から回復するために強制killするように変更
+#        +1列 +20コマンドブロック
+#Patch_Id minecraft:planks@0
+# java -jar ezpatch.jar planks@0 -i before.txt -o after.txt -c 8 -u -1922,12,-200;-1922,12,-201
+#@進捗どうですか
+
+scoreboard objectives add BugChecker dummy バグチェッカー
+# 一秒クロック上列
+setblock -1898 12 -200 minecraft:chain_command_block 5 replace {Command:scoreboard players add @a[score_HP_min=1] BugChecker 1,auto:1b}
+setblock -1897 12 -200 minecraft:chain_command_block 5 replace {Command:scoreboard players reset @e[type=Player,score_BugChecker_min=1] BugChecker,auto:1b}
+setblock -1896 12 -200 minecraft:chain_command_block 5 replace {Command:tellraw @a[score_BugChecker_min=2,score_BugChecker=2] [{"text":"[注意] ベッドバグが検知されました。\nリログすることをお勧めします!","color":"yellow","bold":true}],auto:1b}
+setblock -1895 12 -200 minecraft:chain_command_block 5 replace {Command:execute @a[score_BugChecker_min=2] ~ ~ ~ testforblock ~1 ~ ~1 bed,auto:1b}
+setblock -1894 12 -200 minecraft:chain_command_block 13 replace {Command:scoreboard players add Sleeping BugChecker 1,auto:1b}
+setblock -1893 12 -200 minecraft:chain_command_block 5 replace {Command:execute @a ~ ~ ~ testforblock ~1 ~ ~1 air,auto:1b}
+setblock -1892 12 -200 minecraft:chain_command_block 13 replace {Command:scoreboard players reset Sleeping BugChecker,auto:1b}
+setblock -1891 12 -200 minecraft:chain_command_block 5 replace {Command:scoreboard players test Sleeping BugChecker 7 *,auto:1b}
+setblock -1890 12 -200 minecraft:chain_command_block 13 replace {Command:execute @a[score_BugChecker_min=2,tag=!BugKILL] ~ ~ ~ detect ~1 ~ ~1 bed -1 scoreboard players tag @a[c=1] add BugKILL,auto:1b}
+setblock -1889 12 -200 minecraft:chain_command_block 13 replace {Command:tellraw @a[tag=BugKILL] [{"text":"ベッドバグから回復するために強制killを実行しました。","color":"yellow","bold":true}],auto:1b}
+setblock -1888 12 -200 minecraft:chain_command_block 13 replace {Command:scoreboard players test Sightseeing Settings * 0,auto:1b}
+setblock -1887 12 -200 minecraft:chain_command_block 13 replace {Command:scoreboard players set Sightseeing Settings 2,auto:1b}
+setblock -1886 12 -200 minecraft:chain_command_block 13 replace {Command:gamerule keepInventory true,auto:1b}
+setblock -1885 12 -200 minecraft:chain_command_block 13 replace {Command:tellraw @a[tag=BugKILL] [{"text":"一時的にkeepInventoryを有効にしたのでアイテムは飛び散りません。","color":"yellow","bold":true}],auto:1b}
+setblock -1884 12 -200 minecraft:chain_command_block 5 replace {Command:gamerule showDeathMessages false,auto:1b}
+setblock -1883 12 -200 minecraft:chain_command_block 5 replace {Command:kill @a[tag=BugKILL],auto:1b}
+setblock -1882 12 -200 minecraft:chain_command_block 5 replace {Command:gamerule showDeathMessages true,auto:1b}
+setblock -1881 12 -200 minecraft:chain_command_block 5 replace {Command:clone -1920 12 -201 -1920 12 -201 -1920 12 -201 filtered force minecraft:command_block 5,auto:1b}
+
+# 新規追加列
+setblock -1920 12 -201 minecraft:command_block 5 replace {Command:testfor @e[tag=BugKILL,type=Player],auto:1b}
+setblock -1919 12 -201 minecraft:chain_command_block 13 replace {Command:scoreboard players tag @a[tag=BugKILL] remove BugKILL,auto:1b}
+setblock -1918 12 -201 minecraft:chain_command_block 13 replace {Command:scoreboard players test Sightseeing Settings 2 *,auto:1b}
+setblock -1917 12 -201 minecraft:chain_command_block 13 replace {Command:scoreboard players set Sightseeing Settings 0,auto:1b}
+setblock -1916 12 -201 minecraft:chain_command_block 13 replace {Command:gamerule keepInventory false,auto:1b}
+setblock -1915 12 -201 minecraft:chain_command_block 5 replace {Command:execute @a[tag=BugKILL,c=1] ~ ~ ~ clone -1920 12 -201 -1920 12 -201 -1920 12 -201 filtered force minecraft:command_block 5,auto:1b}
+
+!SUCCESS:{"text":"ベッドバグ検知パッチv2.0の導入に成功しました！\nby Ponpon Twitter/ @nepon13","color":"green"}
+!FAILURE:{"text":"パッチの導入に失敗しました。\nすでにこのパッチは導入済みの可能性があります。","color":"red"}
