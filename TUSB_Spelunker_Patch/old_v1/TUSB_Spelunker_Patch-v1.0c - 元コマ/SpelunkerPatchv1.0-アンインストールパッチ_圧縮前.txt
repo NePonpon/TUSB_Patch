@@ -1,0 +1,10 @@
+/fill -1924 4 -124 -1888 13 -123 air
+/clone -1879 14 -188 -1878 14 -188 -1880 14 -188 replace move
+/clone -1915 9 -189 -1915 9 -189 -1916 9 -189 replace move
+/clone -1914 8 -177 -1914 8 -177 -1915 8 -177 replace move
+scoreboard objectives remove Spkillfrom
+scoreboard objectives remove SpJump
+scoreboard objectives remove SpBfun
+scoreboard objectives remove Damagescore
+scoreboard objectives remove FlyCount
+/tellraw @a[c=1] [{"text":"スペランカーパッチv1.0のアンインストールが完了しました。","color":"gold"}]

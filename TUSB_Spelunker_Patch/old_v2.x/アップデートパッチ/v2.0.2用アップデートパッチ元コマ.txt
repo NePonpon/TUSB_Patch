@@ -1,0 +1,18 @@
+#SpelukerPatch-v2.0.2用アップデートパッチ
+#java -jar ezpatch.jar wool@14 -i before.txt -o after.txt -c -1
+
+/fill -1906 9 -200 -1905 9 -200 air
+/blockdata -1915 8 -123 {Command:/scoreboard players tag @e[tag=!SpA,type=Wolf] add SpA}
+setblock -1909 8 -123 minecraft:chain_command_block 5 replace {Command:/scoreboard players tag @e[tag=SpA,type=Wolf] remove SpA {Attributes:[{Name:generic.maxHealth,Base:30d}]},auto:1b}
+/setblock -1922 9 -189 wool 14
+/setblock -1922 14 -188 wool 14
+/setblock -1922 8 -177 wool 14
+/setblock -1922 4 -125 wool 14
+/setblock -1922 4 -124 wool 14
+/setblock -1922 8 -124 wool 14
+/setblock -1922 9 -124 wool 14
+/setblock -1922 10 -124 wool 14
+/setblock -1922 11 -124 wool 14
+/setblock -1922 13 -124 wool 14
+/setblock -1922 8 -123 wool 14
+!SUCCESS:{"text":"スペランカーパッチを2.1.0にアップデートしました！\nby Ponpon Twitter/ @nepon13","color":"green"}

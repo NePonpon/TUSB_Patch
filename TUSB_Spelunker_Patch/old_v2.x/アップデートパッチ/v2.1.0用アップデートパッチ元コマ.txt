@@ -1,0 +1,13 @@
+#@進捗どうですか
+###v2.1.0用アップデートパッチ元コマ
+###patch_id:wool@14
+##java -jar ezpatch.jar wool@14 -i before.txt -o after.txt -c -1
+#更新内容 : 召喚士のウルフを手なずけた後、SpA付与処理をされると解除されなかったので修正
+#
+#{Attribute:[{Name:"generic.maxHealth",Base:30.0d}]}
+#↓
+#{ArmorItems:[{id:"minecraft:bone"}]}
+
+blockdata -1909 8 -123 {Command:/scoreboard players tag @e[tag=SpA,type=Wolf] remove SpA {ArmorItems:[{id:"minecraft:bone"}]}}
+
+!SUCCESS:{"text":"スペランカーパッチをv2.1.1にアップデートしました！","color":"green"}
