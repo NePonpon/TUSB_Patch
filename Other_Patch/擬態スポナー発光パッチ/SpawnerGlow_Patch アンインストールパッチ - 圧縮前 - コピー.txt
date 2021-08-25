@@ -1,0 +1,6 @@
+#解除パッチ元コマ
+/scoreboard teams remove SpawnerGlow
+/setblock -1924 4 -119 minecraft:glowstone
+/fill -1920 4 -119 -1916 4 -119 air
+/setblock -1902 16 -69 minecraft:repeating_command_block 0 replace {auto:1b,Command:kill @e[tag=SpawnerGlowing]}
+/kill @e[tag=SpawnerGlowing]
