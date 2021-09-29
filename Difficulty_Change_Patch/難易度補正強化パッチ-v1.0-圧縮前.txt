@@ -1,0 +1,48 @@
+#@進捗どうですか
+#Difficulty_Change_Patch v1.0
+#PatchId - nether_wart_block
+#java -jar ezpatch.jar nether_wart_block -i before.txt -o after.txt -c 20 -u -1922,14,-188;-1922,17,-200
+
+#タイプ設定
+clone -1884 14 -188 -1879 14 -188 -1883 14 -188 replace move
+setblock -1884 14 -188 chain_command_block 13 replace {auto:1b,Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:absorption 1 0 true"}
+
+# 難易度調整
+setblock -1919 17 -200 chain_command_block 5 replace {auto:1b,Command:/scoreboard players operation $SumLevel Global += @a Level}
+setblock -1918 17 -200 chain_command_block 5 replace {auto:1b,Command:/scoreboard players operation $SumLevel Global /= Difficulty Settings}
+setblock -1917 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players operation $SumLevel Global /= #2 Const}
+setblock -1916 17 -200 chain_command_block 5 replace {auto:1b,Command:/scoreboard players operation Difficulty Settings *= Difficulty Settings}
+setblock -1915 17 -200 chain_command_block 5 replace {auto:1b,Command:/scoreboard players test Sightseeing Settings * 0}
+setblock -1914 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players operation Difficulty Settings += #ConquerPctInt Global}
+setblock -1913 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players operation $SumLevel Global *= #2 Const}
+setblock -1912 17 -200 chain_command_block 5 replace {auto:1b,Command:/scoreboard players operation Difficulty Settings += $SumLevel Global}
+setblock -1911 17 -200 chain_command_block 5 replace {auto:1b,Command:/blockdata -1886 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:speed 1 0 true"}}
+setblock -1910 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1885 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:resistance 1 0 true"}}
+setblock -1911 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1884 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:absorption 1 0 true"}}
+setblock -1910 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 20 *}
+setblock -1909 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1886 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:speed 1000000 0 true"}}
+setblock -1908 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1885 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:resistance 1000000 0 true"}}
+setblock -1907 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 40 *}
+setblock -1906 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1884 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:absorption 1000000 2 true"}}
+setblock -1905 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 60 *}
+setblock -1904 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1886 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:speed 1000000 1 true"}}
+setblock -1903 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 80 *}
+setblock -1902 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1885 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:resistance 1000000 1 true"}}
+setblock -1901 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 100 *}
+setblock -1900 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1886 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:speed 1000000 2 true"}}
+setblock -1899 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1884 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:absorption 1000000 4 true"}}
+setblock -1898 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 120 *}
+setblock -1897 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1884 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:absorption 1000000 7 true"}}
+setblock -1896 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 140 *}
+setblock -1895 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1885 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:resistance 1000000 2 true"}}
+setblock -1894 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1886 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:speed 1000000 3 true"}}
+setblock -1893 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 160 *}
+setblock -1892 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1886 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:speed 1000000 4 true"}}
+setblock -1891 17 -200 chain_command_block 13 replace {auto:1b,Command:/scoreboard players test Difficulty Settings 190 *}
+setblock -1890 17 -200 chain_command_block 13 replace {auto:1b,Command:/blockdata -1884 14 -188 {Command:"/effect @e[tag=TypeCheck,team=,type=!Player] minecraft:absorption 1000000 9 true"}}
+setblock -1889 17 -200 chain_command_block 5 replace {auto:1b,Command:/scoreboard players reset $SumLevel Global}
+
+
+#メッセージ
+!SUCCESS:[{"text":"難易度補正強化パッチv1.0の導入に成功しました。","color":"green"}]
+!FAILURE:{"text":"パッチの導入に失敗しました。\nすでにこのパッチは導入済みの可能性があるか、\n重複するパッチが導入されている可能性があります！","color":"red"}
