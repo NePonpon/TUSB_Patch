@@ -33,19 +33,19 @@
 /setblock -1882 12 -192 chain_command_block 5 replace {auto:1b,Command:/clone -1920 9 -128 -1920 9 -128 -1920 9 -128 filtered force minecraft:command_block 5 ###転職時処理}
 #登録処理
 /setblock -1920 8 -128 command_block 5 replace {auto:1b,Command:}
-/setblock -1919 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players operation @a[tag=GetExpID,limit=1] ExpID = #NextExpID ExpID}
+/setblock -1919 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players operation @a[tag=GetExpID,c=1] ExpID = #NextExpID ExpID}
 /setblock -1918 8 -128 chain_command_block 5 replace {auto:1b,Command:/summon ArmorStand ~ ~-0.5 ~ {Tags:["ExpEntity","WillGetID","nothaveJob"],Small:true,Marker:true,NoGravity:true}}
 /setblock -1917 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players operation @e[tag=WillGetID] ExpID = #NextExpID ExpID}
 /setblock -1916 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players tag @e[tag=WillGetID] remove WillGetID}
 /setblock -1915 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players add #NextExpID ExpID 1}
-/setblock -1914 8 -128 chain_command_block 5 replace {auto:1b,Command:/tellraw @a [{"selector":"@a[tag=GetExpID,limit=1]"},{"text":" をID:"},{"score":{"objective":"ExpID","name":"@a[tag=GetExpID,limit=1]"}},{"text":" でオフライン経験値ストレージとの紐づけをしました。"}]}
-/setblock -1913 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players tag @a[tag=GetExpID,limit=1] add ExpEntity}
-/setblock -1912 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players set @a[tag=GetExpID,limit=1] ExpSystemFlag 2}
+/setblock -1914 8 -128 chain_command_block 5 replace {auto:1b,Command:/tellraw @a [{"selector":"@a[tag=GetExpID,c=1]"},{"text":" をID:"},{"score":{"objective":"ExpID","name":"@a[tag=GetExpID,c=1]"}},{"text":" でオフライン経験値ストレージとの紐づけをしました。"}]}
+/setblock -1913 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players tag @a[tag=GetExpID,c=1] add ExpEntity}
+/setblock -1912 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players set @a[tag=GetExpID,c=1] ExpSystemFlag 2}
 /setblock -1911 8 -128 chain_command_block 5 replace {auto:1b,Command:/clone -1920 9 -128 -1920 9 -128 -1920 9 -128 filtered force minecraft:command_block 5 ###転職時処理}
-/setblock -1910 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players tag @a[tag=GetExpID,limit=1] remove GetExpID}
+/setblock -1910 8 -128 chain_command_block 5 replace {auto:1b,Command:/scoreboard players tag @a[tag=GetExpID,c=1] remove GetExpID}
 /setblock -1909 8 -128 chain_command_block 5 replace {auto:1b,Command:/testfor @a[tag=!ExpEntity,socre_ExpSystemFlag_min=5,score_ExpSystemFlag=5]}
 /setblock -1908 8 -128 chain_command_block 13 replace {auto:1b,Command:/clone -1920 8 -128 -1920 8 -128 -1920 8 -128 filtered force minecraft:command_block 5 ###リピート}
-/blockdata -1920 8 -128 {Command:/scoreboard players tag @a[tag=!ExpEntity,socre_ExpSystemFlag_min=5,score_ExpSystemFlag=5,limit=1] add GetExpID}
+/blockdata -1920 8 -128 {Command:/scoreboard players tag @a[tag=!ExpEntity,socre_ExpSystemFlag_min=5,score_ExpSystemFlag=5,c=1] add GetExpID}
 #転職時コピー処理
 /setblock -1920 9 -128 command_block 5 replace {auto:1b,Command:}
 /setblock -1919 9 -128 chain_command_block 5 replace {auto:1b,Command:scoreboard players operation @e[type=ArmorStand,tag=ExpEntity] ExpMessageFlag -= @a[score_ExpSystemFlag_min=2,score_ExpSystemFlag=2] ExpID}
