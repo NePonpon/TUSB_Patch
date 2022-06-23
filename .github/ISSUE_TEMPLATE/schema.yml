@@ -55,3 +55,6 @@ body:
       - label: macOS
       - label: Windows
       - label: Linux
+  valiadations:
+    required: true
+
