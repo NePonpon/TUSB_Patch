@@ -1,0 +1,57 @@
+name: schema
+description: samples
+title: "サンプル"
+labels: []
+body:
+- type: markdown
+  attributes:
+    value: "## Thank you for contributing to our project!"
+- type: markdown
+  attributes:
+    value: |
+      Thanks for taking the time to fill out this bug report.
+
+- type: textarea
+  id: repro
+  attributes:
+    label: Reproduction steps
+    description: "How do you trigger this bug? Please walk us through it step by step."
+    value: |
+      1.
+      2.
+      3.
+      ...
+    render: bash
+  validations:
+    required: true
+
+- type: input
+  id: prevalence
+  attributes:
+    label: Bug prevalence
+    description: "How often do you or others encounter this bug?"
+    placeholder: "Example: Whenever I visit the personal account page (1-2 times a week)"
+  validations:
+    required: true
+
+- type: dropdown
+  id: download
+  attributes:
+    label: How did you download the software?
+    options:
+      - Homebrew
+      - MacPorts
+      - apt-get
+      - Built from source
+  validations:
+    required: true
+
+- type: checkboxes
+  id: operating-systems
+  attributes:
+    label: Which operating systems have you used?
+    description: You may select more than one.
+    options:
+      - label: macOS
+      - label: Windows
+      - label: Linux
