@@ -55,6 +55,6 @@ body:
       - label: macOS
       - label: Windows
       - label: Linux
-  valiadations:
+  validations:
     required: true
 
